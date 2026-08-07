@@ -1,0 +1,12 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+  <!-- Bootstrap -->
+  <Script file="ProfanityLibData~Init.lua"/>
+
+  <!-- Module files (load order matters) -->
+  <Script file="ProfanityLibData~Tables.lua"/>
+
+  <!-- Cleanup -->
+  <Script file="ProfanityLibData~Finalizer.lua"/>
+
+</Ui>

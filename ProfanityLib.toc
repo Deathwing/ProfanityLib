@@ -1,0 +1,26 @@
+## Interface: 20506, 11509
+## Title: ProfanityLib
+## Notes: Lightweight profanity matching library for user-supplied names and text.
+## IconTexture: Interface\AddOns\ProfanityLib\Media\logo.png
+## Author: Deathwing
+## X-Website: https://github.com/Deathwing/ProfanityLib
+## X-Repository: https://github.com/Deathwing/ProfanityLib
+## X-Curse-Project-ID: 1644664
+## X-License: GNU GPL3
+## X-Category: Library
+## Category-enUS: Libraries
+## Category-deDE: Bibliotheken
+## Category-esES: Bibliotecas
+## Category-esMX: Bibliotecas
+## Category-frFR: Bibliothèques
+## Category-itIT: Librerie
+## Category-koKR: 라이브러리
+## Category-ptBR: Bibliotecas
+## Category-ruRU: Библиотеки
+## Category-zhCN: 函数库
+## Category-zhTW: 函式庫
+## Version: 1
+# UNCOMMENT_NEXT_LINE
+# ## OptionalDeps: ProfanityLibData
+
+ProfanityLib.xml
