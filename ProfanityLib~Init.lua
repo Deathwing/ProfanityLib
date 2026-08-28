@@ -2,7 +2,7 @@
 ProfanityLib~Init.lua
 --]]
 
-local VERSION = 1
+local VERSION = 2
 
 if ProfanityLib and (ProfanityLib.VERSION or 0) >= VERSION then return end
 

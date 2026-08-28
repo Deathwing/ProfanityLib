@@ -1,4 +1,4 @@
-## Interface: 20506, 11509
+## Interface: 120100, 50504, 20506, 11509
 ## Title: ProfanityLib
 ## Notes: Lightweight profanity matching library for user-supplied names and text.
 ## IconTexture: Interface\AddOns\ProfanityLib\Media\logo.png
@@ -19,7 +19,7 @@
 ## Category-ruRU: Библиотеки
 ## Category-zhCN: 函数库
 ## Category-zhTW: 函式庫
-## Version: 1
+## Version: 2
 # UNCOMMENT_NEXT_LINE
 # ## OptionalDeps: ProfanityLibData
 

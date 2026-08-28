@@ -1,4 +1,4 @@
-## Interface: 20506, 11509
+## Interface: 120100, 50504, 20506, 11509
 ## Title: ProfanityLib Data
 ## Notes: Wordlist data for ProfanityLib.
 ## IconTexture: Interface\AddOns\ProfanityLibData\Media\logo.png
@@ -19,6 +19,6 @@
 ## Category-ruRU: Библиотеки
 ## Category-zhCN: 函数库
 ## Category-zhTW: 函式庫
-## Version: 1
+## Version: 2
 
 ProfanityLibData.xml

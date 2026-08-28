@@ -1,5 +1,11 @@
 # ProfanityLib Changelog
 
+## V2 — 2026-08-28
+
+- Support all game flavors. The TOC now lists Retail (120100), Mists Classic
+  (50504), Anniversary/TBC (20506), and Classic Era (11509) interface numbers
+  so the library loads on every client.
+
 ## V1 — 2026-08-12
 
 - Initial release.
