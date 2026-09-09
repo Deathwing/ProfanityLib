@@ -5,10 +5,12 @@ The wordlist. Terms are stored pre-folded (lowercase ASCII letters only —
 see fold() in ProfanityLib~Match): matching folds the input the same way,
 so a term containing a digit or symbol would never match.
 
-Every term was validated against a corpus of 808,940 real character names
-and 17,205 guild names extracted from the death databases; the only strings
-flagged are genuinely offensive (78 of 826,145). Candidate terms that
-collided with legitimate names were demoted to EXACT_TERMS or dropped:
+Every term was validated against a corpus of 824,414 real character names
+and 17,463 guild names extracted from the death databases (2026-09-09);
+104 of 841,877 strings are flagged and all are deliberate, the one
+debatable hit being the guild "Le Coon et sa bande" (a South Park
+reference caught by the exact term "coon"). Candidate terms that collided
+with legitimate names were demoted to EXACT_TERMS or dropped:
 
   heeb   -> Pheebe, Cheebamon, Heebiejeebee   (54 hits, exact only)
   yid    -> Sayid, Druyid, Mayidie            (57 hits, exact only)
@@ -38,6 +40,21 @@ collided with legitimate names were demoted to EXACT_TERMS or dropped:
   ladyboy / futanari / slut / cunt / rape / bitch -> lewd rather than
             slurs, and collide (Bodycøunt, Grapesurgeon, 182 slut hits);
             out of scope for this list
+  kyke   -> Cheekykent, Kinkykelly, Skyket      (5 hits, exact only)
+  himmler -> Schimmler, Schimmlerr              (dropped)
+  niger  -> Snigeren, Reinigerr, Thenigerian   (15 hits, dropped)
+  dago   -> Dagobert, Canadagoose, Dagobah      (105 hits, dropped)
+  polack / mengele -> Polacko, Mengelele        (dropped, ambiguous)
+  jap / kraut / spook / zog / heil -> everyday words or syllables in
+            other languages (140-371 hits each, dropped)
+
+Since ProfanityLib V3 accented Latin letters fold to ASCII before
+matching, so every term above also covers spellings such as "Nïggér",
+"Fàggot" or "Trännyfäggot" (26 corpus strings that V2 missed). Two
+accidental V2 catches are gone: "Negrão" and "Niggé" used to fold to the
+exact words "negro" / "nigg" once their accented letter was stripped. Both
+are also real surnames, and "nigge" as a substring would hit Bonigge,
+Niggels and Säuniggel, so they are not re-added.
 
 SUBSTRING_TERMS match anywhere in the folded string. EXACT_TERMS only
 match a whole word (or the whole folded string). EXCEPTIONS are benign
@@ -53,13 +70,13 @@ if not _pld then return end
 --- Terms matched anywhere in the folded string.
 ProfanityLibData.SUBSTRING_TERMS = {
 	-- anti-Black
-	"nigger", "nigga", "nigguh", "niglet", "nigglet", "nignog",
+	"nigger", "niggr", "nigga", "nigguh", "niglet", "nigglet", "nignog",
 	"negrosucks", "jigabo", "jiggabo", "junglebunny", "porchmonkey",
 	"spearchucker", "tarbaby", "pickaninny", "picaninny", "sheboon",
 	"golliwog", "groid", "coalburner", "dindunuffin", "dindunothin",
 	"shitskin",
 	-- anti-Asian
-	"chingchong", "slanteye", "zipperhead",
+	"chingchong", "chinaman", "slanteye", "zipperhead",
 	-- anti-Latino
 	"wetback",
 	-- anti-Arab / anti-Muslim
@@ -67,11 +84,11 @@ ProfanityLibData.SUBSTRING_TERMS = {
 	-- anti-Indian
 	"currymuncher", "pajeet",
 	-- antisemitic / Nazi
-	"gasjew", "ovenjew", "jewburner", "heilhitler", "hitler",
+	"gasjew", "ovenjew", "jewburner", "jewboy", "heilhitler", "hitler",
 	"holocaust", "gaschamber", "auschwitz", "zyklonb", "swastika",
 	"siegheil", "whitepower", "kukluxklan",
 	-- anti-LGBT
-	"faggot", "faggit", "tranny", "trannie", "shemale", "lgbtqfag",
+	"faggot", "faggit", "fagget", "tranny", "trannie", "shemale", "lgbtqfag",
 	-- sexual abuse
 	"rapist", "pedophile", "pedofile", "paedophile", "paedofile",
 	"paedo", "childmolester", "kidmolester", "kidfucker", "childrape",
@@ -88,7 +105,7 @@ ProfanityLibData.EXACT_TERMS = {
 	["coon"] = true,
 	["chink"] = true, ["chinks"] = true,
 	["gook"] = true, ["gooks"] = true,
-	["kike"] = true, ["kikes"] = true,
+	["kike"] = true, ["kikes"] = true, ["kyke"] = true, ["kykes"] = true,
 	["dyke"] = true, ["dykes"] = true,
 	["nazi"] = true, ["nazis"] = true,
 	["injun"] = true, ["injuns"] = true,
@@ -106,7 +123,7 @@ ProfanityLibData.EXACT_TERMS = {
 	["darkie"] = true, ["darkies"] = true, ["darkey"] = true,
 	["wog"] = true, ["wogs"] = true,
 	["paki"] = true, ["pakis"] = true,
-	["zyklon"] = true,
+	["zyklon"] = true, ["kkk"] = true,
 	["spastic"] = true,
 }
 

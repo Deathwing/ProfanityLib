@@ -1,5 +1,17 @@
 # ProfanityLib Changelog
 
+## V3 — 2026-09-09
+
+- **Accented letters no longer hide a slur.** Accented letters used to be
+  dropped before matching, so `Nïgger` became `ngger` and passed the filter.
+  Accents are the most common way to sneak a slur past a name filter. Latin
+  accented letters are now mapped to their plain form (`ï→i`, `ñ→n`, `ø→o`,
+  `æ→ae`, `ß→ss`, …) before the usual leetspeak folding, so `Nïggér`,
+  `Fàggot`, `Hitlér` and `Rêtarded` are caught. Other scripts such as
+  Cyrillic are unaffected.
+- Ships with ProfanityLibData V3, which was re-checked against the current
+  death databases under the new matching; see its changelog.
+
 ## V2 — 2026-08-28
 
 - Support all game flavors. The TOC now lists Retail (120100), Mists Classic

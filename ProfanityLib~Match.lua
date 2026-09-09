@@ -5,10 +5,12 @@ Matching for user-supplied strings (character names, guild names,
 last words).
 
   ProfanityLib:IsProfane("N1ggerHunter")  --> true, "nigger"
+  ProfanityLib:IsProfane("Nïggér")        --> true, "nigger"
   ProfanityLib:Clean("gg")                --> true
   ProfanityLib:AddTerm("term", exact)
 
-Matching folds leetspeak digits/symbols to letters, lowercases, and strips
+Matching folds accented Latin letters to ASCII ("ï" -> "i", "æ" -> "ae"),
+folds leetspeak digits/symbols to letters, lowercases, and strips
 everything that is not an ASCII letter before testing. Repeated characters
 are deliberately NOT collapsed: folding "nigga" to "niga" makes it match
 innocent real names such as "Brennigan" and "Siniganggang".
@@ -42,11 +44,13 @@ local function resolveTerms()
 	end
 end
 
----Fold a string for matching: lowercase, apply leet substitutions, then
----strip everything that is not an ASCII letter.
+---Fold a string for matching: map accented Latin letters to ASCII,
+---lowercase, apply leet substitutions, then strip everything that is not
+---an ASCII letter.
 ---@param s string
 ---@return string
 local function fold(s)
+	s = s:gsub("[\195-\197][\128-\191]", _pl.DIACRITIC_MAP)
 	s = s:lower()
 	s = s:gsub("[013457%$@!]", _pl.LEET_MAP)
 	return (s:gsub("[^a-z]", ""))

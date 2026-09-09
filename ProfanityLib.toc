@@ -19,7 +19,7 @@
 ## Category-ruRU: Библиотеки
 ## Category-zhCN: 函数库
 ## Category-zhTW: 函式庫
-## Version: 2
+## Version: 3
 # UNCOMMENT_NEXT_LINE
 # ## OptionalDeps: ProfanityLibData
 

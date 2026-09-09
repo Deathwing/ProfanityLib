@@ -7,7 +7,7 @@ It contains the curated wordlist used by the library's matching engine.
 ### What This Package Contains
 
 * Substring terms, whole-word-only terms, and benign-word exceptions
-* Every term validated against a corpus of 808,940 real character names and 17,205 guild names for zero false positives
+* Every term validated against a corpus of 824,414 real character names and 17,463 guild names extracted from the death databases, including accented spellings, so legitimate names are not flagged
 
 ### Who Should Install This
 

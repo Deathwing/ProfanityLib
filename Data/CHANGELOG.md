@@ -1,5 +1,23 @@
 # ProfanityLibData Changelog
 
+## V3 — 2026-09-09
+
+- **Re-checked for ProfanityLib V3**, which now ignores accents when
+  matching. The existing wordlist catches 26 accented spellings from the
+  real-name corpus that were previously missed (`Nígger`, `Trännyfäggot`,
+  `Hitlér`, `Ñigga`, …) without flagging any legitimate name, so no new
+  exceptions were needed.
+- **New terms:** `jewboy`, `chinaman`, `fagget` and `niggr`, all with zero
+  innocent matches in the corpus; `kyke` and `kkk` as whole words only.
+- **Checked and left out:** `himmler` (Schimmler), `niger` (Snigeren,
+  Reiniger, Thenigerian), `dago` (Dagobert, Canadagoose), `polack`,
+  `mengele`, and everyday words in other languages such as `jap`, `kraut`,
+  `spook`, `zog` and `heil`. The reasoning is kept in the wordlist header.
+- **Corpus refreshed:** 824,414 character names and 17,463 guild names from
+  the current death databases, 104 flagged. Two names that were only caught
+  by accident before (`Negrão`, `Niggé`, both also real surnames) are no
+  longer flagged.
+
 ## V2 — 2026-08-28
 
 - Support all game flavors. The TOC now lists Retail (120100), Mists Classic
