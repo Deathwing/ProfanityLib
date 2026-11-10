@@ -1,5 +1,10 @@
 # ProfanityLib Changelog
 
+## V4 — 2026-11-10
+
+- One running copy. When several addons ship the library, the newest installed copy is used: it takes over from an older one that loaded first instead of running next to it, and terms added with `AddTerm` carry over. A copy from V3 or earlier cannot be taken over and stays in use until it is updated.
+- Support World of Warcraft: Forever and Patch 12.1.5. The TOC now also lists the interface numbers 16001 and 120105.
+
 ## V3 — 2026-09-09
 
 - **Accented letters no longer hide a slur.** Accented letters used to be

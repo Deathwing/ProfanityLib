@@ -1,5 +1,10 @@
 # ProfanityLibData Changelog
 
+## V4 — 2026-11-10
+
+- When more than one copy is installed, the newest installed copy is used. A copy from V3 or earlier cannot be taken over and stays in use until it is updated.
+- Support World of Warcraft: Forever and Patch 12.1.5. The TOC now also lists the interface numbers 16001 and 120105.
+
 ## V3 — 2026-09-09
 
 - **Re-checked for ProfanityLib V3**, which now ignores accents when

@@ -24,23 +24,35 @@ considered clean) apart from terms added via AddTerm.
 local _pl = ProfanityLib and ProfanityLib.Internal ---@class _pl
 if not _pl then return end
 
---- Runtime wordlists, merged from ProfanityLibData on first use after it
---- loads, so load order does not matter. AddTerm only mutates these copies.
-local substring_terms, exact_terms, exceptions = {}, {}, {}
-local data_merged = false
+--- Runtime wordlists, rebuilt from ProfanityLibData whenever its loaded
+--- version changes, plus the terms registered through AddTerm.
+local state = ProfanityLib.State
+state.added_terms = state.added_terms or {}
+local substring_terms, exact_terms, exceptions
+local merged_data_version
 local function resolveTerms()
-	if data_merged then return end
-	local data = ProfanityLibData
-	if type(data) ~= "table" then return end
-	data_merged = true
-	for _, term in ipairs(data.SUBSTRING_TERMS or {}) do
-		substring_terms[#substring_terms + 1] = term
+	local data = type(ProfanityLibData) == "table" and ProfanityLibData or nil
+	local data_version = data and data.VERSION or false
+	if substring_terms and merged_data_version == data_version then return end
+	merged_data_version = data_version
+	substring_terms, exact_terms, exceptions = {}, {}, {}
+	if data then
+		for _, term in ipairs(data.SUBSTRING_TERMS or {}) do
+			substring_terms[#substring_terms + 1] = term
+		end
+		for term in pairs(data.EXACT_TERMS or {}) do
+			exact_terms[term] = true
+		end
+		for _, word in ipairs(data.EXCEPTIONS or {}) do
+			exceptions[#exceptions + 1] = word
+		end
 	end
-	for term in pairs(data.EXACT_TERMS or {}) do
-		exact_terms[term] = true
-	end
-	for _, word in ipairs(data.EXCEPTIONS or {}) do
-		exceptions[#exceptions + 1] = word
+	for _, added in ipairs(state.added_terms) do
+		if added.exact then
+			exact_terms[added.term] = true
+		else
+			substring_terms[#substring_terms + 1] = added.term
+		end
 	end
 end
 
@@ -108,10 +120,6 @@ function ProfanityLib:AddTerm(term, exact)
 	if type(term) ~= "string" or term == "" then return end
 	term = fold(term)
 	if term == "" then return end
-	resolveTerms()
-	if exact then
-		exact_terms[term] = true
-	else
-		substring_terms[#substring_terms + 1] = term
-	end
+	state.added_terms[#state.added_terms + 1] = { term = term, exact = exact and true or false }
+	merged_data_version = nil
 end

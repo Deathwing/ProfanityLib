@@ -2,4 +2,5 @@
 ProfanityLibData~Finalizer.lua
 --]]
 
-if ProfanityLibData.Internal then ProfanityLibData.Internal = nil end
+local lib = ProfanityLibData
+if lib and lib.Internal then lib.Internal = nil end
